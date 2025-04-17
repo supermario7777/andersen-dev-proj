@@ -1,19 +1,37 @@
-import { Pokemon } from '../../data/mockPokemon';
+import { Pokemon } from '../../data/mockPokemons'
+import s from './PokemonItem.module.css'
 
 type Props = {
-  pokemon: Pokemon;
-  index: number;
-};
+  pokemon: Pokemon
+  index: number
+}
 
 const PokemonItem: React.FC<Props> = ({ pokemon, index }) => {
   return (
-    <div onClick={() => console.log(pokemon.name)} style={{ border: '1px solid #ccc', padding: '10px' }}>
+    <div onClick={() => console.log(pokemon.name)} className={s.item}>
       <p>#{index + 1}</p>
       <p>{pokemon.name}</p>
-      <button onClick={(e) => { e.stopPropagation(); console.log('Add to favorites'); }}>❤️</button>
-      <button onClick={(e) => { e.stopPropagation(); console.log('Add to comparison'); }}>⚖️</button>
-    </div>
-  );
-};
 
-export default PokemonItem;
+      <div className={s.buttons}>
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            console.log('Add to favorites')
+          }}
+        >
+          ❤️
+        </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            console.log('Add to comparison')
+          }}
+        >
+          ⚖️
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default PokemonItem

@@ -1,0 +1,17 @@
+.item {
+    width: 200px;
+    height: 150px;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
