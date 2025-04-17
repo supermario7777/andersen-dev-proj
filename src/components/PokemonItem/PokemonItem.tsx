@@ -1,4 +1,4 @@
-import { Pokemon } from '../../data/mockPokemons'
+import { Pokemon } from '../../types/pokemon'
 import s from './PokemonItem.module.css'
 
 type Props = {

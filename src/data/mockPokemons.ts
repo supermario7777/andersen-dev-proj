@@ -1,9 +1,4 @@
-export type Pokemon = {
-  id: number;
-  name: string;
-};
-
-
+import { Pokemon } from '../types/pokemon'
 
 export const mockPokemons: Pokemon[] = [
   { id: 1, name: 'Bulbasaur' },
@@ -15,4 +10,4 @@ export const mockPokemons: Pokemon[] = [
   { id: 7, name: 'Squirtle' },
   { id: 8, name: 'Wartortle' },
   { id: 9, name: 'Blastoise' },
-];
+]
