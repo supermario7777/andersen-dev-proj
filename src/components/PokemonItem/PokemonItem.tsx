@@ -14,7 +14,7 @@ const PokemonItem: React.FC<Props> = ({ pokemon, index }) => {
         <p>#{index + 1}</p>
         <p>{pokemon.name}</p>
       </div>
-      <img src={pokemon.image} className={s.pokemon_img} alt="pokemon-image" />
+      <img src={pokemon.image} className={s.pokemon_img} alt={pokemon.name} />
       <div className={s.buttons}>
         <button
           onClick={(e) => {

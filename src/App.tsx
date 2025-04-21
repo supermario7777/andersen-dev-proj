@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import s from './App.module.css'
 import Home from './pages/Home'
-import MainDetailsPage from './pages/MainDetails'
+import MainDetailsPage from './components/MainDetails/MainDetails'
 
 const App: React.FC = () => {
   return (

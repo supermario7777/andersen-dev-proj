@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Stat } from '../types/stats'
-import { Pokemon } from '../types/pokemon'
-import { mockPokemons } from '../data/mockPokemons'
+import { Pokemon } from '../../types/pokemon'
+import { mockPokemons } from '../../data/mockPokemons'
+import s from './MainDetails.module.css'
 
 const MainDetailsPage: React.FC = () => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
@@ -18,9 +18,9 @@ const MainDetailsPage: React.FC = () => {
   const pokemon: Pokemon = mockPokemons[1]
 
   return (
-    <div>
+    <div className={s.main_details}>
       <h1>{pokemon.name}</h1>
-      <img src={pokemon.image} alt={pokemon.name} />
+      <img className={s.pokemon_img} src={pokemon.image} alt={pokemon.name} />
       <div>
         <p>
           <strong>Height:</strong> {pokemon.height} m
@@ -39,7 +39,7 @@ const MainDetailsPage: React.FC = () => {
           ))}
         </ul>
       </div>
-      <div>
+      <div className={s.buttons}>
         <button onClick={handleFavoriteClick}>
           {isFavorite ? 'Remove from Fav' : 'Add to Fav'}
         </button>
