@@ -6,9 +6,9 @@ type Props = {}
 const Pagination: React.FC = () => {
   return (
     <div className={s.buttons}>
-      <button disabled>Previous</button>
-      <span> Page 1 </span>
-      <button disabled>Next</button>
+      <button >Previous</button>
+      <span className={s.page_number}> Page 1 </span>
+      <button >Next</button>
     </div>
   )
 }

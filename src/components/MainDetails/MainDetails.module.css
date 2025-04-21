@@ -1,8 +1,21 @@
-.header {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_details {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
+
+
+.pokemon_img {
+    border-radius: 25%;
+    width: 25%;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .buttons {

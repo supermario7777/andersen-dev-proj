@@ -7,15 +7,17 @@ type Props = {
 }
 
 const PokemonItem: React.FC<Props> = ({ pokemon, index }) => {
+  const handlePokemonCardClick = () => {}
   return (
-    <div onClick={() => console.log(pokemon.name)} className={s.item}>
-      <p>#{index + 1}</p>
-      <p>{pokemon.name}</p>
-
+    <div onClick={handlePokemonCardClick} className={s.item}>
+      <div className={s.header}>
+        <p>#{index + 1}</p>
+        <p>{pokemon.name}</p>
+      </div>
+      <img src={pokemon.image} className={s.pokemon_img} alt={pokemon.name} />
       <div className={s.buttons}>
         <button
           onClick={(e) => {
-            e.stopPropagation()
             console.log('Add to favorites')
           }}
         >
@@ -23,7 +25,6 @@ const PokemonItem: React.FC<Props> = ({ pokemon, index }) => {
         </button>
         <button
           onClick={(e) => {
-            e.stopPropagation()
             console.log('Add to comparison')
           }}
         >

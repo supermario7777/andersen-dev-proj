@@ -1,9 +1,15 @@
-import './App.css'
-import Home from './pages/Home';
+import { useState } from 'react'
+import s from './App.module.css'
+import Home from './pages/Home'
+import MainDetailsPage from './components/MainDetails/MainDetails'
 
 const App: React.FC = () => {
-  return <Home />;
-};
+  return (
+    <div className={s.app_wrapper}>
+      {/* <Home />; */}
+      <MainDetailsPage />
+    </div>
+  )
+}
 
-export default App;
-
+export default App
