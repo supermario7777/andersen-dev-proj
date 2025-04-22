@@ -1,3 +1,5 @@
+import { useComparison } from '../../context/ComparisonContext'
+import { useFavorites } from '../../context/FavoritesContext'
 import { Pokemon } from '../../types/pokemon'
 import s from './PokemonItem.module.css'
 
@@ -8,6 +10,10 @@ type Props = {
 
 const PokemonItem: React.FC<Props> = ({ pokemon, index }) => {
   const handlePokemonCardClick = () => {}
+
+  const { toggleFavorite } = useFavorites()
+  const { toggleComparison } = useComparison()
+
   return (
     <div onClick={handlePokemonCardClick} className={s.item}>
       <div className={s.header}>
@@ -16,20 +22,8 @@ const PokemonItem: React.FC<Props> = ({ pokemon, index }) => {
       </div>
       <img src={pokemon.image} className={s.pokemon_img} alt={pokemon.name} />
       <div className={s.buttons}>
-        <button
-          onClick={(e) => {
-            console.log('Add to favorites')
-          }}
-        >
-          ❤️
-        </button>
-        <button
-          onClick={(e) => {
-            console.log('Add to comparison')
-          }}
-        >
-          ⚖️
-        </button>
+        <button onClick={() => toggleFavorite(pokemon)}>❤️</button>
+        <button onClick={() => toggleComparison(pokemon)}>⚖️</button>
       </div>
     </div>
   )

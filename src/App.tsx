@@ -1,13 +1,16 @@
-import { useState } from 'react'
 import s from './App.module.css'
-import Home from './pages/Home'
-import MainDetailsPage from './components/MainDetails/MainDetails'
+import Comparison from './pages/Comparison/Comparison'
+import Favorites from './pages/Favorites/Favorites'
+import Home from './pages/Home/Home'
+import MainDetailsPage from './pages/MainDetails/MainDetails'
 
 const App: React.FC = () => {
   return (
     <div className={s.app_wrapper}>
-      {/* <Home />; */}
+      <Home />;
       <MainDetailsPage />
+      <Favorites />
+      <Comparison />
     </div>
   )
 }
