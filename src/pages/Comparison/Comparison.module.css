@@ -1,0 +1,9 @@
+.header {
+    text-align: center;
+}
+
+.pokemons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
