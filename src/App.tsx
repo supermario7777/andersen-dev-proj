@@ -7,8 +7,8 @@ import MainDetailsPage from './pages/MainDetails/MainDetails'
 const App: React.FC = () => {
   return (
     <div className={s.app_wrapper}>
-      <Home />;
-      <MainDetailsPage />
+      {/* <Home /> */}
+      {/* <MainDetailsPage /> */}
       <Favorites />
       <Comparison />
     </div>
