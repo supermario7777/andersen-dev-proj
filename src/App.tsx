@@ -7,21 +7,22 @@ import MainDetailsPage from './pages/MainDetails/MainDetails'
 
 const App: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/favorites" element={<Favorites />}></Route>
-      <Route path="/comparison" element={<Comparison />}></Route>
-      <Route path="/details/:id" element={<MainDetailsPage />}></Route>
-    </Routes>
+    <div className={s.app_wrapper}>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/favorites" element={<Favorites />}></Route>
+        <Route path="/comparison" element={<Comparison />}></Route>
+        <Route path="/details/:id" element={<MainDetailsPage />}></Route>
+      </Routes>
+    </div>
   )
 }
 
 export default App
 
-
-    // <div className={s.app_wrapper}>
-    //   {/* <Home /> */}
-    //   {/* <MainDetailsPage /> */}
-    //   <Favorites />
-    //   <Comparison />
-    // </div>
+// <div className={s.app_wrapper}>
+//   {/* <Home /> */}
+//   {/* <MainDetailsPage /> */}
+//   <Favorites />
+//   <Comparison />
+// </div>
