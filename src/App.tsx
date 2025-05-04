@@ -19,10 +19,3 @@ const App: React.FC = () => {
 }
 
 export default App
-
-// <div className={s.app_wrapper}>
-//   {/* <Home /> */}
-//   {/* <MainDetailsPage /> */}
-//   <Favorites />
-//   <Comparison />
-// </div>

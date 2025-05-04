@@ -34,7 +34,7 @@ const MainDetailsPage: React.FC = () => {
       <img className={s.pokemon_img} src={pokemon.image} alt={pokemon.name} />
       <div>
         <p>
-          <strong>Height:</strong> {pokemon.height} m
+          <strong>Height:</strong> {pokemon.height}
         </p>
         <p>
           <strong>Weight:</strong> {pokemon.weight} kg
