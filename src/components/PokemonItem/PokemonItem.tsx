@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { Pokemon } from '../../types/pokemon'
 import s from './PokemonItem.module.css'
 
@@ -7,10 +8,14 @@ type Props = {
 }
 
 const PokemonItem: React.FC<Props> = ({ pokemon, index }) => {
-  const handlePokemonCardClick = () => {}
+  const navigate = useNavigate()
+
+  const goToMainDetails = () => {
+    navigate(`/details/${pokemon.id}`)
+  }
 
   return (
-    <div onClick={handlePokemonCardClick} className={s.item}>
+    <div onClick={goToMainDetails} className={s.item}>
       <div className={s.header}>
         <p>#{index + 1}</p>
         <p>{pokemon.name}</p>
