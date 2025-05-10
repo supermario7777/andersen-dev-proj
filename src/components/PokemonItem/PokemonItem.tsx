@@ -22,8 +22,22 @@ const PokemonItem: React.FC<Props> = ({ pokemon, index }) => {
       </div>
       <img src={pokemon.image} className={s.pokemon_img} alt={pokemon.name} />
       <div className={s.buttons}>
-        <button onClick={() => console.log('add to fav')}>❤️</button>
-        <button onClick={() => console.log('add to compare')}>⚖️</button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            console.log('add to fav')
+          }}
+        >
+          ❤️
+        </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            console.log('add to compare')
+          }}
+        >
+          ⚖️
+        </button>
       </div>
     </div>
   )
