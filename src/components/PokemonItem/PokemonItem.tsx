@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Pokemon } from '../../types/pokemon'
+import { Pokemon } from '../../interfaces/pokemon'
 import s from './PokemonItem.module.css'
 
 type Props = {

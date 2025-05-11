@@ -1,10 +1,11 @@
-import { Stat } from './stats'
-
-export type Pokemon = {
+export interface Pokemon {
   id: number
   name: string
   height: number
   weight: number
   image: string
-  stats: Stat[]
+  stats: {
+    name: string
+    value: number
+  }[]
 }
