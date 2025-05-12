@@ -1,12 +1,12 @@
-import { mockPokemons } from '../../data/mockPokemons'
+// import { mockPokemons } from '../../data/mockPokemons'
 import s from './Comparison.module.css'
 
 const Comparison: React.FC = () => {
-  const pokemonsList = [mockPokemons[0], mockPokemons[1]]
+  // const pokemonsList = [mockPokemons[0], mockPokemons[1]]
 
   return (
     <div>
-      <h2 className={s.header}>Compare Pokémon</h2>
+      {/* <h2 className={s.header}>Compare Pokémon</h2>
       <div className={s.pokemons}>
         <div>
           <div key={pokemonsList[0].id}>
@@ -24,7 +24,7 @@ const Comparison: React.FC = () => {
           <p>Weight: {pokemonsList[1].weight}</p>
           <button>Remove</button>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

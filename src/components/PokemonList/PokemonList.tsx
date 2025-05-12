@@ -1,16 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import s from './PokemonList.module.css'
-import { mockPokemons } from '../../data/mockPokemons';
-import PokemonItem from '../PokemonItem/PokemonItem';
+import PokemonItem from '../PokemonItem/PokemonItem'
+import { AppDispatch, RootState } from '../../store'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadPokemons } from '../../thunks/loadPokemons'
 
 const PokemonList: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch()
+
+  const { pokemons, loading, error, pagination } = useSelector((state: RootState) => state.pokemon)
+
+  useEffect(() => {
+    dispatch(loadPokemons({ limit: pagination.limit, offset: pagination.offset }))
+  }, [dispatch, pagination.limit, pagination.offset])
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error: {error}</p>
+
   return (
     <div className={s.items}>
-      {mockPokemons.map((p, i) => (
+      {pokemons.map((p, i) => (
         <PokemonItem key={p.id} pokemon={p} index={i} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default PokemonList;
+export default PokemonList
