@@ -10,3 +10,10 @@
 .header {
     text-align: center;
 }
+
+.empty {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: gray;
+}

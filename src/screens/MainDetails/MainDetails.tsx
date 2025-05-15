@@ -1,9 +1,9 @@
-// src/pages/MainDetailsPage.tsx
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store'
 import { loadPokemonDetails } from '../../thunks/loadPokemonDetails'
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter'
 import s from './MainDetails.module.css'
 
 const MainDetailsPage: React.FC = () => {
@@ -36,7 +36,7 @@ const MainDetailsPage: React.FC = () => {
 
   return (
     <div className={s.main_details}>
-      <h1>{selectedPokemon.name}</h1>
+      <h1>{capitalizeFirstLetter(selectedPokemon.name)}</h1>
       <img className={s.pokemon_img} src={selectedPokemon.image} alt={selectedPokemon.name} />
       <div>
         <p>
