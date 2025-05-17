@@ -19,8 +19,8 @@ const PokemonList: React.FC = () => {
 
   return (
     <div className={s.items}>
-      {pokemons.map((p, i) => (
-        <PokemonItem key={p.id} pokemon={p} index={i} />
+      {pokemons.map((p) => (
+        <PokemonItem key={p.id} pokemon={p} />
       ))}
     </div>
   )

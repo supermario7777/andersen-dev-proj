@@ -1,12 +1,22 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import PokemonItem from '../../components/PokemonItem/PokemonItem'
 import s from './Favorites.module.css'
-import FavoritesPagination from '../Favorites/FavoritesPagination/FavoritesPagination'
+import FavoritesPagination from '../../components/Pagination/FavoritesPagination/FavoritesPagination'
 
 const Favorites: React.FC = () => {
+  const navigate = useNavigate()
+
+  const goToHome = () => {
+    navigate('/')
+  }
+
+  const goToComparison = () => {
+    navigate('/comparison')
+  }
+
   const favoritePokemons = useSelector((state: RootState) => state.favorites.favorites)
 
   const [searchParams, setSearchParams] = useSearchParams()
@@ -37,7 +47,15 @@ const Favorites: React.FC = () => {
 
   return (
     <>
-      <h2 className={s.header}>Favorites</h2>
+      <h1 className={s.header}>Favorites</h1>
+      <div className={s.buttons}>
+        <button onClick={goToHome} className="defaultButton">
+          Home
+        </button>
+        <button onClick={goToComparison} className="defaultButton">
+          Comparison
+        </button>
+      </div>
 
       {favoritePokemons.length === 0 ? (
         <p className={s.empty}>You don't have any pokemons in your favorite list.</p>
@@ -45,7 +63,7 @@ const Favorites: React.FC = () => {
         <>
           <div className={s.items}>
             {paginated.map((p, i) => (
-              <PokemonItem key={p.id} pokemon={p} index={start + i} />
+              <PokemonItem key={p.id} pokemon={p} />
             ))}
           </div>
           <FavoritesPagination

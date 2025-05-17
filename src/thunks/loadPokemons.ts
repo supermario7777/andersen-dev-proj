@@ -17,6 +17,10 @@ export const loadPokemons = createAsyncThunk(
           image: detailsData.sprites.front_default,
           height: detailsData.height,
           weight: detailsData.weight,
+          stats: detailsData.stats.map((s: any) => ({
+            name: s.stat.name,
+            value: s.base_stat,
+          })),
         }
       })
     )

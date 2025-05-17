@@ -1,16 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.main_details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.main_details_card {
+.card {
+    width: auto;
+    height: auto;
     border: 1px solid black;
     box-shadow: 5px 5px 1px rgb(0 0 0 / 90%);
     padding: 12px;
@@ -22,41 +12,17 @@
     align-items: center;
 }
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-left: 0;
-}
-
-
 .buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    gap: calc(20px + 1vw);
 }
 
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-}
 
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 5px solid #ccc;
-    border-top-color: #3b82f6;
+.pokemon_img {
     border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+    width: 50%;
+    height: auto;
 }
 
 /* Reset styles just for these icon buttons */

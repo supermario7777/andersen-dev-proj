@@ -31,3 +31,36 @@
     width: 50%;
     height: auto;
 }
+
+/* Reset styles just for these icon buttons */
+.favoriteButton,
+.comparisonButton {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+}
+
+/* Heart icon styles */
+.heartFilled {
+    fill: red;
+    stroke: red;
+}
+
+.heartOutlined {
+    fill: none;
+    stroke: black;
+}
+
+/* Scale (⚖️) icon styles */
+.scaleFilled {
+    fill: #5ccdf6;
+    stroke: #5ccdf6;
+}
+
+.scaleOutlined {
+    fill: none;
+    stroke: black;    ;
+}

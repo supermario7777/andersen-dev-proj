@@ -10,12 +10,6 @@ const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    addToFavorites: (state, action: PayloadAction<Pokemon>) => {
-      state.favorites.push(action.payload)
-    },
-    removeFromFavorites: (state, action: PayloadAction<Pokemon>) => {
-      state.favorites = state.favorites.filter((pokemon) => pokemon.id !== action.payload.id)
-    },
     toggleFavorite: (state, action: PayloadAction<Pokemon>) => {
       const exists = state.favorites.find((p) => p.id === action.payload.id)
       if (exists) {
@@ -27,5 +21,5 @@ const favoritesSlice = createSlice({
   },
 })
 
-export const { addToFavorites, removeFromFavorites, toggleFavorite } = favoritesSlice.actions
+export const { toggleFavorite } = favoritesSlice.actions
 export default favoritesSlice.reducer
