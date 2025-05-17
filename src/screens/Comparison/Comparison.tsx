@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import PokemonComparisonItem from '../../components/PokemonComparisonItem/PokemonComparisonItem'
 
 const Comparison: React.FC = () => {
-  //извлекаем массив comparison из comparisonSlice
   const comparisonList = useSelector((state: RootState) => state.comparison.comparison)
 
   const navigate = useNavigate()

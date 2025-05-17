@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom' // импортируем useNavigate
+import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store'
 import { loadPokemonDetails } from '../../thunks/loadPokemonDetails'
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter'
 import { usePokemonActions } from '../../hooks/usePokemonActions'
-import { Scale, Heart, ArrowLeft } from 'lucide-react' // добавим иконку стрелки назад
+import { Scale, Heart, ArrowLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import ErrorMessage from '../../components/common/ErrorMessage'

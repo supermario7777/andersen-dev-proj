@@ -35,13 +35,17 @@ const Pagination: React.FC = () => {
 
   return (
     <div className={s.buttons}>
-      <button onClick={handlePrevious} disabled={pagination.offset === 0}>
+      <button onClick={handlePrevious} className="defaultButton" disabled={pagination.offset === 0}>
         Previous
       </button>
       <span className={s.page_number}>
         Page {currentPage} of {totalPages}
       </span>
-      <button onClick={handleNext} disabled={pagination.offset + pagination.limit >= totalPokemons}>
+      <button
+        onClick={handleNext}
+        className="defaultButton"
+        disabled={pagination.offset + pagination.limit >= totalPokemons}
+      >
         Next
       </button>
     </div>
