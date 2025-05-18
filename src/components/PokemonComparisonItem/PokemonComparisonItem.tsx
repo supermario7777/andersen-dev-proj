@@ -26,12 +26,14 @@ const PokemonComparisonItem: React.FC<Props> = ({ pokemon }) => {
     <div onClick={goToMainDetails} key={pokemon.id} className={s.card}>
       <img src={pokemon.image} className={s.pokemon_img} alt={pokemon.name} />
       <h3>{`#${pokemon.id} ${capitalizeFirstLetter(pokemon.name)}`}</h3>
-      <p>Height: {pokemon.height}</p>
-      <p>Weight: {pokemon.weight}</p>
-      <div>
-        <h3>Stats:</h3>
+      <div className={s.h_w}>
+        <p>Height: {pokemon.height}</p>
+        <p>Weight: {pokemon.weight}</p>
+      </div>
+      <div className={s.stats}>
+        <h4>Stats:</h4>
         <ul>
-          {pokemon.stats?.map((stat, ) => (
+          {pokemon.stats?.map((stat) => (
             <li key={stat.name}>
               {stat.name}:{stat.value}
             </li>

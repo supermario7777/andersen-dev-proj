@@ -19,6 +19,19 @@
 }
 
 
+.h_w {
+    text-align: start;
+}
+
+.stats {
+    text-align: start;
+    padding-top: 10px;
+}
+
+.stats li {
+    padding-left: 12px;
+}
+
 .pokemon_img {
     border-radius: 50%;
     width: 50%;

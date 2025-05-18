@@ -43,11 +43,11 @@ const MainDetailsPage: React.FC = () => {
       <div className={s.main_details_card}>
         <h2>{`#${selectedPokemon.id} ${capitalizeFirstLetter(selectedPokemon.name)}`}</h2>
         <img className={s.pokemon_img} src={selectedPokemon.image} alt={selectedPokemon.name} />
-        <div>
+        <div className={s.h_w}>
           <p>Height:{selectedPokemon.height}</p>
           <p>Weight:{selectedPokemon.weight} kg</p>
         </div>
-        <div>
+        <div className={s.stats}>
           <h3>Stats:</h3>
           <ul>
             {selectedPokemon.stats?.map((stat) => (
