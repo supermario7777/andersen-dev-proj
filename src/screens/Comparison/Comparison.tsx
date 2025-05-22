@@ -1,31 +1,45 @@
-// import { mockPokemons } from '../../data/mockPokemons'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store'
 import s from './Comparison.module.css'
+import { useNavigate } from 'react-router-dom'
+import PokemonComparisonItem from '../../components/PokemonComparisonItem/PokemonComparisonItem'
 
 const Comparison: React.FC = () => {
-  // const pokemonsList = [mockPokemons[0], mockPokemons[1]]
+  const comparisonList = useSelector((state: RootState) => state.comparison.comparison)
+
+  const navigate = useNavigate()
+
+  const goToHome = () => {
+    navigate('/')
+  }
+
+  const goToFavorites = () => {
+    navigate('/favorites')
+  }
 
   return (
-    <div>
-      {/* <h2 className={s.header}>Compare Pokémon</h2>
+    <>
+      <h1 className={s.header}>Compare Pokémon</h1>
+      <div className={s.buttons}>
+        <button onClick={goToHome} className="defaultButton">
+          Home
+        </button>
+        <button onClick={goToFavorites} className="defaultButton">
+          Favorites
+        </button>
+      </div>
+
       <div className={s.pokemons}>
-        <div>
-          <div key={pokemonsList[0].id}>
-            <img src={pokemonsList[0].image} alt={pokemonsList[0].name} />
-            <h3>{pokemonsList[0].name}</h3>
-            <p>Height: {pokemonsList[0].height}</p>
-            <p>Weight: {pokemonsList[0].weight}</p>
-            <button>Remove</button>
-          </div>
-        </div>
-        <div key={pokemonsList[1].id}>
-          <img src={pokemonsList[1].image} alt={pokemonsList[1].name} />
-          <h3>{pokemonsList[1].name}</h3>
-          <p>Height: {pokemonsList[1].height}</p>
-          <p>Weight: {pokemonsList[1].weight}</p>
-          <button>Remove</button>
-        </div>
-      </div> */}
-    </div>
+        {comparisonList.length === 0 && (
+          <p className={s.empty}>No Pokémon selected for comparison.</p>
+        )}
+
+        {comparisonList.map((p) => (
+          <PokemonComparisonItem key={p.id} pokemon={p} />
+        ))}
+      </div>
+    </>
   )
 }
 

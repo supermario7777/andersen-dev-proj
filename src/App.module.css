@@ -1,3 +1,11 @@
 .app_wrapper {
-    background-color: #FCE40D;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border: 14px solid #1D4A7B;
+    padding: 20px 10px 20px 10px;
+}
+
+ul {
+    list-style-type: none;
 }

@@ -1,17 +1,18 @@
-import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import { Pokemon } from '../../interfaces/pokemon'
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter'
+import { useNavigate } from 'react-router-dom'
 import { Scale, Heart } from 'lucide-react'
 import { motion } from 'framer-motion'
-import s from './PokemonItem.module.css'
-import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter'
+
+import s from './PokemonComparisonItem.module.css'
 import { usePokemonActions } from '../../hooks/usePokemonActions'
 
 type Props = {
   pokemon: Pokemon
 }
 
-const PokemonItem: React.FC<Props> = React.memo(({ pokemon }) => {
+const PokemonComparisonItem: React.FC<Props> = ({ pokemon }) => {
   const navigate = useNavigate()
 
   const { isFavorite, isInComparison, toggleFavorite, toggleComparison } =
@@ -22,12 +23,23 @@ const PokemonItem: React.FC<Props> = React.memo(({ pokemon }) => {
   }
 
   return (
-    <div onClick={goToMainDetails} className={s.item}>
-      <div className={s.header}>
-        <p>#{pokemon.id}</p>
-        <p>{capitalizeFirstLetter(pokemon.name)}</p>
-      </div>
+    <div onClick={goToMainDetails} key={pokemon.id} className={s.card}>
       <img src={pokemon.image} className={s.pokemon_img} alt={pokemon.name} />
+      <h3>{`#${pokemon.id} ${capitalizeFirstLetter(pokemon.name)}`}</h3>
+      <div className={s.h_w}>
+        <p>Height: {pokemon.height}</p>
+        <p>Weight: {pokemon.weight}</p>
+      </div>
+      <div className={s.stats}>
+        <h4>Stats:</h4>
+        <ul>
+          {pokemon.stats?.map((stat) => (
+            <li key={stat.name}>
+              {stat.name}:{stat.value}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className={s.buttons}>
         <motion.button
           onClick={(e) => {
@@ -53,6 +65,6 @@ const PokemonItem: React.FC<Props> = React.memo(({ pokemon }) => {
       </div>
     </div>
   )
-})
+}
 
-export default PokemonItem
+export default PokemonComparisonItem

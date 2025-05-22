@@ -1,17 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.main_details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.main_details_card {
+.card {
+    width: auto;
+    height: auto;
     border: 1px solid black;
     box-shadow: 5px 5px 1px rgb(0 0 0 / 90%);
     padding: 12px;
@@ -21,8 +10,14 @@
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    text-align: center;
 }
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 
 .h_w {
     text-align: start;
@@ -37,15 +32,11 @@
     padding-left: 12px;
 }
 
-
-.buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: calc(20px + 1vw);
+.pokemon_img {
+    border-radius: 50%;
+    width: 50%;
+    height: auto;
 }
-
 
 /* Reset styles just for these icon buttons */
 .favoriteButton,

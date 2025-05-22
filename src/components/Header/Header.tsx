@@ -19,8 +19,12 @@ const Header: React.FC = () => {
     <header className={s.header}>
       <h1>Pokémonia</h1>
       <div className={s.buttons}>
-        <button onClick={goToFavorites}>Favorites</button>
-        <button onClick={goToComparison}>Comparison</button>
+        <button className="defaultButton" onClick={goToFavorites}>
+          Favorites
+        </button>
+        <button className="defaultButton" onClick={goToComparison}>
+          Comparison
+        </button>
       </div>
     </header>
   )

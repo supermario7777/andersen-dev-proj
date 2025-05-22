@@ -1,29 +1,50 @@
-button {
-    all: unset;
+body {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    color: black;
+    padding: 0;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #FCE40D;
+    background-size: cover;
+}
+
+
+button.defaultButton {
     padding: 10px 20px;
     border: 1px solid black;
     border-radius: 6px;
     background-color: #F9F9F9;
     color: black;
     font-size: 14px;
-    font-family: inherit;
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.1s ease;
 }
 
-button:hover {
+button.defaultButton:hover {
     background-color: #eaeaea;
     border-color: #bbb;
 }
 
-button:active {
+button.defaultButton:active {
     background-color: #ddd;
     border-color: #aaa;
+    transform: scale(0.97);
 }
 
-button:disabled {
+button.defaultButton:disabled {
     background-color: #f0f0f0;
     color: #999;
     border-color: #ddd;
     cursor: not-allowed;
+    transform: none;
 }
