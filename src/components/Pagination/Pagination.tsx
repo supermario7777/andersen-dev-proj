@@ -1,41 +1,37 @@
-// src/components/Pagination.tsx
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, AppDispatch } from '../../store/index'
-import { loadPokemons } from '../../thunks/loadPokemons'
-import { setPagination } from '../../slices/pokemon/pokemonSlice'
+import { useGetPokemonsQuery } from '../../services/pokemonApi'
 import s from './Pagination.module.css'
 
-const Pagination: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch()
+type Props = {
+  offset: number
+  limit: number
+  onPageChange: (newOffset: number) => void
+}
 
-  const { pagination } = useSelector((state: RootState) => state.pokemon)
+const Pagination: React.FC<Props> = ({ offset, limit, onPageChange }) => {
+  const { data } = useGetPokemonsQuery({ limit, offset })
 
-  const totalPokemons = pagination.total
-
-  const totalPages = Math.ceil(totalPokemons / pagination.limit)
+  const totalPokemons = data?.count ?? 0
+  const totalPages = Math.ceil(totalPokemons / limit)
+  const currentPage = Math.floor(offset / limit) + 1
 
   const handleNext = () => {
-    const newOffset = pagination.offset + pagination.limit
+    const newOffset = offset + limit
     if (newOffset < totalPokemons) {
-      dispatch(setPagination({ offset: newOffset }))
-      dispatch(loadPokemons({ limit: pagination.limit, offset: newOffset }))
+      onPageChange(newOffset)
     }
   }
 
   const handlePrevious = () => {
-    const newOffset = pagination.offset - pagination.limit
+    const newOffset = offset - limit
     if (newOffset >= 0) {
-      dispatch(setPagination({ offset: newOffset }))
-      dispatch(loadPokemons({ limit: pagination.limit, offset: newOffset }))
+      onPageChange(newOffset)
     }
   }
-  const currentPage =
-    pagination.limit === 0 ? 1 : Math.ceil((pagination.offset + 1) / pagination.limit)
 
   return (
     <div className={s.buttons}>
-      <button onClick={handlePrevious} className="defaultButton" disabled={pagination.offset === 0}>
+      <button onClick={handlePrevious} className="defaultButton" disabled={offset === 0}>
         Previous
       </button>
       <span className={s.page_number}>
@@ -44,7 +40,7 @@ const Pagination: React.FC = () => {
       <button
         onClick={handleNext}
         className="defaultButton"
-        disabled={pagination.offset + pagination.limit >= totalPokemons}
+        disabled={offset + limit >= totalPokemons}
       >
         Next
       </button>

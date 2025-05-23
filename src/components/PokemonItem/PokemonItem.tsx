@@ -22,7 +22,17 @@ const PokemonItem: React.FC<Props> = React.memo(({ pokemon }) => {
   }
 
   return (
-    <div onClick={goToMainDetails} className={s.item}>
+    <motion.div
+      onClick={goToMainDetails}
+      className={s.item}
+      whileHover={{ scale: 1.03 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: 'easeOut',
+      }}
+    >
       <div className={s.header}>
         <p>#{pokemon.id}</p>
         <p>{capitalizeFirstLetter(pokemon.name)}</p>
@@ -51,7 +61,7 @@ const PokemonItem: React.FC<Props> = React.memo(({ pokemon }) => {
           <Scale size={18} className={isInComparison ? s.scaleFilled : s.scaleOutlined} />
         </motion.button>
       </div>
-    </div>
+    </motion.div>
   )
 })
 

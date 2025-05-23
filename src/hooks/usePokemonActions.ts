@@ -9,7 +9,7 @@ import { AppDispatch, RootState } from '../store'
 import { Pokemon } from '../interfaces/pokemon'
 import { useCallback } from 'react'
 
-export const usePokemonActions = (pokemon: Pokemon | null) => {
+export const usePokemonActions = (pokemon: Pokemon | null | undefined) => {
   const dispatch: AppDispatch = useDispatch()
 
   const favoritePokemons = useSelector((state: RootState) => state.favorites.favorites)
