@@ -1,39 +1,31 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch, RootState } from '../../store'
-import { loadPokemonDetails } from '../../thunks/loadPokemonDetails'
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter'
 import { usePokemonActions } from '../../hooks/usePokemonActions'
-import { Scale, Heart, ArrowLeft } from 'lucide-react'
+import { Scale, Heart } from 'lucide-react'
 import { motion } from 'framer-motion'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import ErrorMessage from '../../components/common/ErrorMessage'
 import NotFoundMessage from '../../components/common/NotFoundMessage'
 import s from './MainDetails.module.css'
+import { useGetPokemonByIdQuery } from '../../services/pokemonApi'
 
 const MainDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>()
-  const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
-  const { selectedPokemon, loading, error } = useSelector((state: RootState) => state.pokemon)
+
+  const { data: selectedPokemon, isLoading, error } = useGetPokemonByIdQuery(id ?? '')
 
   const { isFavorite, isInComparison, toggleFavorite, toggleComparison } =
     usePokemonActions(selectedPokemon)
 
-  useEffect(() => {
-    if (id) {
-      dispatch(loadPokemonDetails(id))
-    }
-  }, [dispatch, id])
-
-  if (loading) return <LoadingSpinner />
-  if (error) return <ErrorMessage message={error} />
-  if (!selectedPokemon) return <NotFoundMessage message="Pokemon not found." />
-
   const handleBack = () => {
     navigate(-1)
   }
+
+  if (isLoading) return <LoadingSpinner />
+  if (error) return <ErrorMessage message="Failed to load pokemon details" />
+  if (!selectedPokemon) return <NotFoundMessage message="Pokemon not found." />
 
   return (
     <div className={s.main_details}>
@@ -44,15 +36,15 @@ const MainDetailsPage: React.FC = () => {
         <h2>{`#${selectedPokemon.id} ${capitalizeFirstLetter(selectedPokemon.name)}`}</h2>
         <img className={s.pokemon_img} src={selectedPokemon.image} alt={selectedPokemon.name} />
         <div className={s.h_w}>
-          <p>Height:{selectedPokemon.height}</p>
-          <p>Weight:{selectedPokemon.weight} kg</p>
+          <p>Height: {selectedPokemon.height}</p>
+          <p>Weight: {selectedPokemon.weight} kg</p>
         </div>
         <div className={s.stats}>
           <h3>Stats:</h3>
           <ul>
             {selectedPokemon.stats?.map((stat) => (
               <li key={stat.name}>
-                {stat.name}:{stat.value}
+                {stat.name}: {stat.value}
               </li>
             ))}
           </ul>

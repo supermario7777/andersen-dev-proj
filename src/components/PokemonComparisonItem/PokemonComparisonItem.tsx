@@ -23,7 +23,18 @@ const PokemonComparisonItem: React.FC<Props> = ({ pokemon }) => {
   }
 
   return (
-    <div onClick={goToMainDetails} key={pokemon.id} className={s.card}>
+    <motion.div
+      onClick={goToMainDetails}
+      whileHover={{ scale: 1.03 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: 'easeOut',
+      }}
+      key={pokemon.id}
+      className={s.card}
+    >
       <img src={pokemon.image} className={s.pokemon_img} alt={pokemon.name} />
       <h3>{`#${pokemon.id} ${capitalizeFirstLetter(pokemon.name)}`}</h3>
       <div className={s.h_w}>
@@ -63,7 +74,7 @@ const PokemonComparisonItem: React.FC<Props> = ({ pokemon }) => {
           <Scale size={18} className={isInComparison ? s.scaleFilled : s.scaleOutlined} />
         </motion.button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
