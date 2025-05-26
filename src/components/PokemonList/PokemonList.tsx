@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useDeferredValue } from 'react'
 import s from './PokemonList.module.css'
 import PokemonItem from '../PokemonItem/PokemonItem'
 import { useGetPokemonsQuery } from '../../services/pokemonApi'
@@ -12,20 +12,11 @@ type Props = {
 const PokemonList: React.FC<Props> = ({ offset, limit }) => {
   const { data, isLoading, isFetching, error } = useGetPokemonsQuery({ offset, limit })
 
-  // to store the last pokemon list
-  const lastDataRef = useRef(data?.pokemons ?? [])
+  const deferredValue = useDeferredValue(data?.pokemons ?? [])
+  const pokemonsToShow = isFetching ? deferredValue : data?.pokemons ?? []
 
-  // we renew lastDataRef when we get new data
-  useEffect(() => {
-    if (data?.pokemons) {
-      lastDataRef.current = data.pokemons
-    }
-  }, [data])
-
-  // to show the last data or empty array if we are loading
-  const pokemonsToShow = isFetching ? lastDataRef.current : data?.pokemons ?? []
-
-  if (isLoading && !lastDataRef.current.length) return <LoadingSpinner />
+  // if we are loading and there is no data yet, show loading spinner
+  if (isLoading && !pokemonsToShow.length) return <LoadingSpinner />
   if (error) return <p>Error loading pokemons</p>
 
   return (
