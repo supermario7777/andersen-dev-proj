@@ -1,28 +1,46 @@
-import React, { useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import s from './PokemonList.module.css'
 import PokemonItem from '../PokemonItem/PokemonItem'
-import { AppDispatch, RootState } from '../../store'
-import { useDispatch, useSelector } from 'react-redux'
-import { loadPokemons } from '../../thunks/loadPokemons'
+import { useGetPokemonsQuery } from '../../services/pokemonApi'
 import LoadingSpinner from '../common/LoadingSpinner'
 
-const PokemonList: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch()
+type Props = {
+  offset: number
+  limit: number
+}
 
-  const { pokemons, loading, error, pagination } = useSelector((state: RootState) => state.pokemon)
+const PokemonList: React.FC<Props> = ({ offset, limit }) => {
+  const { data, isLoading, isFetching, error } = useGetPokemonsQuery({ offset, limit })
 
+  // to store the last pokemon list
+  const lastDataRef = useRef(data?.pokemons ?? [])
+
+  // we renew lastDataRef when we get new data
   useEffect(() => {
-    dispatch(loadPokemons({ limit: pagination.limit, offset: pagination.offset }))
-  }, [dispatch, pagination.limit, pagination.offset])
+    if (data?.pokemons) {
+      lastDataRef.current = data.pokemons
+    }
+  }, [data])
 
-  if (loading) return <LoadingSpinner/>
-  if (error) return <p>Error: {error}</p>
+  // to show the last data or empty array if we are loading
+  const pokemonsToShow = isFetching ? lastDataRef.current : data?.pokemons ?? []
+
+  if (isLoading && !lastDataRef.current.length) return <LoadingSpinner />
+  if (error) return <p>Error loading pokemons</p>
 
   return (
-    <div className={s.items}>
-      {pokemons.map((p) => (
-        <PokemonItem key={p.id} pokemon={p} />
-      ))}
+    <div className={s.container} style={{ position: 'relative' }}>
+      <div className={s.items}>
+        {pokemonsToShow.map((p) => (
+          <PokemonItem key={p.id} pokemon={p} />
+        ))}
+      </div>
+
+      {isFetching && (
+        <div className={s.loading}>
+          <LoadingSpinner />
+        </div>
+      )}
     </div>
   )
 }

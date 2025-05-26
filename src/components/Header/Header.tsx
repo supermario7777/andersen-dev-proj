@@ -2,8 +2,6 @@ import React from 'react'
 import s from './Header.module.css'
 import { useNavigate } from 'react-router-dom'
 
-type Props = {}
-
 const Header: React.FC = () => {
   const navigate = useNavigate()
 
